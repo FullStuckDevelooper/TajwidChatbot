@@ -1,9 +1,3 @@
-from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
-import telebot
-import os
-
-
 tajwid_dict = {
 
 
@@ -24,24 +18,4 @@ tajwid_dict = {
 
 }
 
-# test =["apa pengertian tajwid","apa pengertian idhar","berapa huruf idhar","bagaimana cara membaca idhar","contoh bacaan idhar","apa pengertian idghom","bagaimana cara membaca idghom","contoh bacaan idghom"]
-# print(process.extract("pengertian idgom", tajwid_dict.keys(), limit=1))
-# print(fuzz.ratio("pengertian idgom", "apa pengertian idghom"))
-
-def match_term(term, list_names, min_score=0):
-    max_score =-1
-    max_name=""
-
-    for term2 in list_names:
-        score = fuzz.ratio(term, term2)
-        if (score > min_score) & (score > max_score):
-            max_name = term2
-            max_score = score
-    return (max_name, max_score)
-
-test =["apa pengertian tajwid","apa pengertian idhar","berapa huruf idhar","bagaimana cara membaca idhar","contoh bacaan idhar","apa pengertian idghom","bagaimana cara membaca idghom","contoh bacaan idghom"]
-
-x =match_term("apa pengertian tjwdi", tajwid_dict.keys(), min_score= 50)
-jawab = tajwid_dict[x[0]]
-print(jawab)
 
