@@ -12,8 +12,7 @@ bot =telebot.TeleBot('1673764376:AAH7kfxOVg5mgn_5ApqO7zcrYbiWWHy61c4')
 
 @bot.message_handler(commands=['Greet'])
 def greet(message):
-    bot.reply_to(message, "Hallo Selamat datang di Bot Informasi Tajwid ")
-
+    bot.reply_to(message, "Contoh bacaan mad wajib muttashil, ketika mad tobii bertemu huruf hamzah اِذَا جَآءَ dibaca izajaa-a (5 harkat)")
 @bot.message_handler(commands=['random'])
 def greet(message):
     bot.reply_to(message, random.choice(list(tajwid_dict.values())))
@@ -21,12 +20,15 @@ def greet(message):
 
 @bot.message_handler(content_types=['text'])
 def tajwid(message):
-    x =match_term(message.text, tajwid_dict.keys(), min_score= 50)
-    jawab = tajwid_dict[x[0]]
+    
+    levDist =match_term(message.text, tajwid_dict.keys(), min_score= 50)
 
-    bot.reply_to(message, jawab)
-
-
+    if levDist[0]=="":
+        bot.reply_to(message, "Maaf Jawaban tidak ditemukan")
+    else:
+        jawab = tajwid_dict[levDist[0]]
+        bot.reply_to(message, jawab)
+        print(levDist[1])  #debuging proses
 
 
 
