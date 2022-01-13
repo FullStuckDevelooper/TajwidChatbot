@@ -2,7 +2,9 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import nltk
 from nltk.tokenize.treebank import TreebankWordDetokenizer
+from nltk.corpus import stopwords
 import string
+import re
 
 #Preprocessing
 def preprocessing(raw):
@@ -10,14 +12,18 @@ def preprocessing(raw):
    hasil= raw.lower()
   
     # tokenize dan penghapusan tanda baca
-   trantab = str.maketrans(dict.fromkeys(list(string.punctuation)))
+   hasil = re.sub(r"\d+", "",hasil)
+   trantab = str.maketrans(dict.fromkeys(list(string.punctuation)))  #penghapusan tanda baca
+  
    hasil= hasil.translate(trantab)
    hasil= nltk.word_tokenize(hasil)
-    #stopword
+   #stopword
+   list_stopwords = set(stopwords.words('indonesian'))
+   list_stopwords.remove('cara')
+   clean_data = [word for word in hasil if not word in list_stopwords]
 
 
-
-   return TreebankWordDetokenizer().detokenize(hasil)
+   return TreebankWordDetokenizer().detokenize(clean_data)
 
 
 
@@ -35,10 +41,10 @@ def match_term(term, list_names, min_score=0):
     return (max_name, max_score)
 
 
-# a= "asu sua suu suu ????"
+# a= "asu sua suu suu ?1...???"
 # trantab = str.maketrans(dict.fromkeys(list(string.punctuation)))
 # a= a.translate(trantab)
-
+# a = re.sub(r"\d+", "",a)
 # print(nltk.word_tokenize(a))
 
-# print(preprocessing("MANDI SAMA KAMU BAU IHH !!!! ..00009090889"))
+# print(preprocessing("cara bacaan idhar"))
