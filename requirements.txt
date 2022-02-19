@@ -1,0 +1,13 @@
+certifi==2021.5.30
+chardet==4.0.0
+click==8.0.1
+fuzzywuzzy==0.18.0
+idna==2.10
+joblib==1.0.1
+nltk==3.6.3
+pyTelegramBotAPI==3.8.1
+python-Levenshtein==0.12.2
+regex==2021.8.28
+requests==2.25.1
+tqdm==4.62.2
+urllib3==1.26.6
