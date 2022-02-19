@@ -10,13 +10,23 @@ bot =telebot.TeleBot('1673764376:AAH7kfxOVg5mgn_5ApqO7zcrYbiWWHy61c4')
 
 
 
-@bot.message_handler(commands=['Greet'])
+@bot.message_handler(commands=['about'])
 def greet(message):
-    bot.reply_to(message, "Contoh bacaan mad wajib muttashil, ketika mad tobii bertemu huruf hamzah اِذَا جَآءَ dibaca izajaa-a (5 harkat)")
+    about = f"Ini adalah sebuah aplikasi yang bertujuan untuk memberikan informasi tajwid dasar kepada penggunanya, cukup ketikan pertanyaan yang ingin anda tanyakan.\nDibuat untuk menyelesaikan  tugas studi S1 teknik Informatika"
+    bot.send_message(message.chat.id, about)
     
 @bot.message_handler(commands=['random'])
 def greet(message):
-    bot.reply_to(message, random.choice(list(tajwid_dict.values())))
+    bot.send_message(message.chat.id, random.choice(list(tajwid_dict.values())))
+
+@bot.message_handler(commands=['help'])
+def greet(message):
+    bantuan = f'''-----------------------LIST COMMAND YANG TERSEDIA-----------------------
+    \n/about : Berfungsi memberikan Informasi tentang aplikasi chatbot tajwid ini
+    \n/help : Berfungsi untuk memberikan informasi tentang command yang tersedia pada aplikasi ini
+    \n/random : Berfungsi untuk memberikan informasi acak yang berhubungan dengan tajwid 
+    \nUntuk melakukan pertanyaan, cukup ketikan pertanyaan anda tanpa menggunakan Command apapun'''
+    bot.send_message(message.chat.id, bantuan)
 
 
 @bot.message_handler(content_types=['text'])
@@ -28,9 +38,10 @@ def tajwid(message):
         bot.reply_to(message, "Maaf Jawaban tidak ditemukan")
     else:
         jawab = tajwid_dict[levDist[0]]
-        score = levDist[1]
+        # score = levDist[1]
+        score = f"Similarity : {levDist[1]} %"
         bot.reply_to(message, jawab)
-        bot.reply_to(message, score)
+        bot.send_message(message.chat.id, score )
         print(levDist[1])  #debuging proses
 
 

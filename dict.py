@@ -102,13 +102,13 @@ tajwid_dict = {
 
 #mad iwad
 "pengertian mad iwadl":"mad iwadl memiliki arti 'mad yang berarti panjang, iwadl yang berarti ganti tanwin' disebut demikian ketika tanwin jabar/fathah yang jatuh pada waqof di akhir kalimat sehingga tanwin tidak berbunyi lagi",
-"cara membaca mad iwadl":"Cara membacanya dipanjangkan sampai satu ALIF atau 2 harakat ",
+"cara membaca mad iwadl":"Cara membaca Mad Iwad dipanjangkan sampai satu ALIF atau 2 harakat ",
 "contoh bacaan mad iwadl ":"Contoh bacaan mad iwadl, adalah kalimat قَوْمًا بُورًا  dibaca Qaumam BURAA (2 harakat)",
 
 #mad Badal
 
 "pengertian mad badal":"mad badal memiliki arti 'mad yang berarti panjang, badal yang berarti pengganti' disebut demikian ketika hamzah bertemu dengan mad yang berasal dari hamzah sukun, kemudian hamzah ini di ubah dan diganti dengan alif, wau, ataupun YAA",
-"cara membaca mad badal":"Cara membacanya dipanjangkan sampai satu ALIF atau 2 harakat ",
+"cara membaca mad badal":"Cara membaca Mad Badal dipanjangkan sampai satu ALIF atau 2 harakat ",
 "contoh bacaan mad badal ":"Contoh bacaan mad badal, adalah kalimat  آيَاتِ  dibaca AAYAATI (2 harakat)",
 
 #mad lazim harfi mukfhafa
