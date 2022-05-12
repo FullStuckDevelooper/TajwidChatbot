@@ -3,6 +3,7 @@ import os
 import random
 from dict import tajwid_dict
 from process import match_term
+from leveinsthein import Leveinsthein
 
 API_KEY = os.getenv('API_KEY')
 bot =telebot.TeleBot('1673764376:AAH7kfxOVg5mgn_5ApqO7zcrYbiWWHy61c4')
@@ -32,7 +33,7 @@ def greet(message):
 @bot.message_handler(content_types=['text'])
 def tajwid(message):
     
-    levDist =match_term(message.text, tajwid_dict.keys(), min_score= 50)
+    levDist =Leveinsthein.match_term(message.text, tajwid_dict.keys(), min_score= 50)
 
     if levDist[0]=="":
         bot.reply_to(message, "Maaf Jawaban tidak ditemukan")
@@ -43,6 +44,7 @@ def tajwid(message):
         bot.reply_to(message, jawab)
         bot.send_message(message.chat.id, score )
         print(levDist[1])  #debuging proses
+        
 
 
 
